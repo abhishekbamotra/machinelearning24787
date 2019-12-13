@@ -1,0 +1,911 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0039)https://www.cs.cmu.edu/~keystroke/#sec2 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+  Keystroke Dynamics - Benchmark Data Set
+</title>
+
+
+
+<style type="text/css">
+<!--
+
+body {
+text-align:left;
+margin:60px;
+}
+
+.hdr {
+color:blue;
+font-style:italic;
+cursor:pointer;
+}
+
+.sec {
+margin:20px;
+}
+
+.ans {
+padding:20px;
+}
+
+dl.bib dt {
+float: left;
+padding:0 0 0 0
+}
+
+dl.bib dt:before {
+content: "[";
+}
+
+dl.bib dt:after {
+content:  "]";
+}
+
+dl.bib dd {
+padding:0 0 10 0
+}
+
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+function setDisplay(obj,bool) {
+  var el = document.getElementById(obj);
+  if( bool == 1 ) {
+    el.style.display = '';
+  } else {
+    el.style.display = 'none';
+  }
+}
+function switchDisplay(obj) {
+  var el = document.getElementById(obj);
+  if ( el.style.display != "none" ) {
+    setDisplay( obj, 0 );
+    return( 0 );
+  } else {
+    setDisplay( obj, 1 );
+    return( 1 );
+  }
+}
+function toggleAll() {
+  var bool = switchDisplay('q1-1');
+  setDisplay('q1-2', bool);
+  setDisplay('q1-3', bool);
+  setDisplay('q1-4', bool);
+  setDisplay('q2-1', bool);
+  setDisplay('q2-2', bool);
+  setDisplay('q2-3', bool);
+  setDisplay('q3-1', bool);
+  setDisplay('q3-2', bool);
+  setDisplay('q3-3', bool);
+  setDisplay('q3-4', bool);
+  setDisplay('q3-5', bool);
+  setDisplay('q4-1', bool);
+  setDisplay('q4-2', bool);
+  setDisplay('q4-3', bool);
+}
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFA">
+
+<hr>
+
+<h3 align="center">
+  :-:-:
+  &nbsp;
+  Keystroke Dynamics - Benchmark Data Set
+  &nbsp;
+  :-:-:<br>
+</h3>
+
+<h4 align="center">
+  Accompaniment to "Comparing Anomaly-Detection Algorithms
+  for Keystroke Dynamics" (DSN-2009)<br>
+</h4>
+
+<hr>
+
+<div align="center">
+by<br>
+Kevin Killourhy and Roy Maxion<br>
+<a href="http://mailhide.recaptcha.net/d?k=01hlZeUEGkodjfXxU6Qgrapg==&amp;c=KoKgSyakUSB-Q9BKSKKgHZLzPXR0LE3H5FCTXSijkWQ=" onclick="window.open(&#39;http://mailhide.recaptcha.net/d?k=01hlZeUEGkodjfXxU6Qgrapg==&amp;c=KoKgSyakUSB-Q9BKSKKgHZLzPXR0LE3H5FCTXSijkWQ=&#39;, &#39;&#39;, &#39;toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300&#39;); return false;" title="Reveal this e-mail address">(click to show email)</a>
+</div>
+
+<h3>Contents:</h3>
+
+<div class="sec">
+
+This webpage is a benchmark data set for keystroke dynamics.  It is a
+supplement to the paper "Comparing Anomaly-Detection Algorithms for
+Keystroke Dynamics," by Kevin Killourhy and Roy Maxion, published in
+the proceedings of the DSN 2009 conference <a href="https://www.cs.cmu.edu/~keystroke/#ref1">[1]</a>.
+The webpage is organized as follows:
+
+<ul>
+
+<li> <a href="https://www.cs.cmu.edu/~keystroke/#sec1">1. Introduction</a>: About this webpage
+
+</li><li> <a href="https://www.cs.cmu.edu/~keystroke/#sec2">2. The Data</a>: Timing data for 51 typists
+
+</li><li> <a href="https://www.cs.cmu.edu/~keystroke/#sec3">3. Evaluation Script:</a> Script for evaluating
+3 anomaly detectors
+
+</li><li> <a href="https://www.cs.cmu.edu/~keystroke/#sec4">4. Table of Results:</a> Error-rate results for
+the detectors
+
+</li><li> <a href="https://www.cs.cmu.edu/~keystroke/#sec5">5. References:</a> Relevant material and
+acknowledgments
+
+</li></ul>
+
+Sections 1 – 4 each consist of a brief explanation of their
+contents, followed by a list of common questions that provide more
+detail about the material.  Click on a question to show the answer, or
+display all answers by clicking on:
+
+<ul>
+<li> <div class="hdr" onclick="toggleAll();">
+  SHOW / HIDE answers to all questions below.</div>
+</li></ul>
+
+</div>
+
+<hr>
+
+<div id="sec1">
+<h3>1. Introduction</h3>
+
+<div class="sec">
+
+On this webpage, we share the data, scripts, and results of our
+evaluation so that other researchers can use the data, reproduce our
+results, and extend them; or, use the data for investigations of
+related topics, such as intrusion, masquerader or insider detection.
+We hope these resources will be useful to the research
+community.<br><br>
+
+<b>Common questions:</b>
+
+<ul>
+<li> <div class="hdr" onclick="switchDisplay(&#39;q1-1&#39;);">
+Q1-1: What is keystroke dynamics (or keystroke biometrics)?
+</div>
+
+<div id="q1-1" style="display: none;"><div class="ans">
+
+Keystroke dynamics is the study of whether people can be distinguished
+by their typing rhythms, much like handwriting is used to identify the
+author of a written text.  Possible applications include acting as an
+electronic fingerprint, or in an access-control mechanism.  A digital
+fingerprint would tie a person to a computer-based crime in the same
+manner that a physical fingerprint ties a person to the scene of a
+physical crime.  Access control could incorporate keystroke dynamics
+both by requiring a legitimate user to type a password with the
+correct rhythm, and by continually authenticating that user while they
+type on the keyboard.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q1-2&#39;);">
+Q1-2: What is your paper about?  What is this webpage for?
+</div>
+
+<div id="q1-2" style="display: none;"><div class="ans">
+
+To make measurable progress in the field of keystroke dynamics, shared
+data and shared evaluation methods are necessary.  In our paper, we
+describe a methodology by which timing data was collected and used to
+evaluate 14 anomaly detectors (e.g., based on support vector machines,
+neural networks, and fuzzy logic).  The anomaly-detection task was to
+discriminate between the typing of a genuine user trying to gain
+legitimate access to his or her account, and the typing of an impostor
+trying to gain access illegitimately to that same account.  Our intent
+with this webpage is to share our resources—the typing data, the
+evaluation script, and the table of results—with the research
+community, and to answer questions that they (or you) might have.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q1-3&#39;);">
+Q1-3: Where can I find a copy of the paper?
+</div>
+
+<div id="q1-3" style="display: none;"><div class="ans">
+
+The paper is included in the Proceedings of the 39th Annual Dependable
+Systems and Networks (DSN-2009) Conference, published by IEEE Press <a href="https://www.cs.cmu.edu/~keystroke/#ref1">[1]</a>.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q1-4&#39;);">
+Q1-4: How would I cite this webpage in a publication?
+</div>
+
+<div id="q1-4" style="display: none;"><div class="ans">
+
+This webpage is a supplement to our original paper in DSN-2009, and
+the paper refers readers to this website.  Consequently, we ask
+authors who find this web resource useful provide a citation to the
+original paper <a href="https://www.cs.cmu.edu/~keystroke/#ref1">[1]</a>.  See the citation in Section
+5, References, at the end of this web page.
+
+</div></div>
+
+</li></ul>
+
+</div> </div>
+
+
+<div id="sec2">
+<h3>2. The Data </h3>
+
+<div class="sec">
+
+The data consist of keystroke-timing information from 51 subjects
+(typists), each typing a password (<code>.tie5Roanl</code>) 400 times.
+
+<ul>
+<li>
+<a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.txt"><code>DSL-StrongPasswordData.txt</code></a>
+   (Fixed-width format) ................... MD5 hash = e5b72954c2e093a0a4ec7ca1485f9d05
+   
+</li><li> <a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.csv"><code>DSL-StrongPasswordData.csv</code></a>
+    (Comma-separated-value format) MD5 hash = 470235f96568f28f9ea0da62234ec857
+
+</li><li><a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.xls"><code>DSL-StrongPasswordData.xls</code></a>
+    (Excel format) ............................. MD5 hash = e1a69b03315664d5dcaefd52583d6ad9
+</li></ul>
+
+<b>Common questions:</b>
+
+<ul>
+
+<li> <div class="hdr" onclick="switchDisplay(&#39;q2-1&#39;);">
+Q2-1: How were the data collected?
+</div>
+
+<div id="q2-1" style=""><div class="ans">
+
+For complete details of our data collection methodology, we refer
+readers to our original paper <a href="https://www.cs.cmu.edu/~keystroke/#ref1">[1]</a>.  A brief
+summary of our methodology follows.<br><br>
+
+We built a keystroke data-collection apparatus consisting of: (1) a
+laptop running Windows XP; (2) a software application for presenting
+stimuli to the subjects, and for recording their keystrokes; and (3)
+an external reference timer for timestamping those keystrokes.  The
+software presents the subject with the password to be typed.  As the
+subject types the password, it is checked for correctness.  If the
+subject makes a typographical error, the application prompts the
+subject to retype the password.  In this manner, we record timestamps
+for 50 correctly typed passwords in each session.<br><br>
+
+Whenever the subject presses or releases a key, the software
+application records the event (i.e., keydown or keyup), the name of
+the key involved, and a timestamp for the moment at which the
+keystroke event occurred.  An external reference clock was used to
+generate highly accurate timestamps.  The reference clock was
+demonstrated to be accurate to within ±200 microseconds (by using
+a function generator to simulate key presses at fixed
+intervals).<br><br>
+
+We recruited 51 subjects (typists) from within a university community;
+all subjects fully completed the study—we did not drop any subjects.
+All subjects typed the same password, and each subject typed the
+password 400 times over 8 sessions (50 repetitions per session).  They
+waited at least one day between sessions, to capture some of the
+day-to-day variation of each subject's typing.  The password
+(<code>.tie5Roanl</code>) was chosen to be representative of a strong
+10-character password.<br><br>
+
+The raw records of all the subjects' keystrokes and timestamps were
+analyzed to create a password-timing table.  The password-timing table
+encodes the timing features for each of the 400 passwords that each
+subject typed.<br><br>
+
+</div></div>
+ 
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q2-2&#39;);">
+Q2-2: How do I read the data into R / Matlab / Weka / Excel / ...?
+</div>
+
+<div id="q2-2" style=""><div class="ans">
+
+The data are provided in three different formats to make it easier for
+researchers visiting this page to view and manipulate the data.  In
+all its forms, the data are organized into a table, but different
+applications are better suited to different formats.<br><br>
+
+<i>(R)</i>: In the <a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.txt">fixed-width
+format</a>, the columns of the table are separated by one or more
+spaces so that the information in each column is aligned vertically.
+This format is easy to read in a standard web browser or document
+editor with a fixed width font.  It can also be read by the standard
+data-input mechanisms of the statistical-programming environment <a href="http://www.r-project.org/">R</a>.  Specifically, the
+<code>read.table</code> command can be used to read the data into a
+structure called a <code>data.frame</code>:<br><br>
+
+<center>
+<code> X &lt;-read.table( 'DSL-StrongPasswordData.txt', header=TRUE ) </code>
+</center>
+<br>
+
+<i>(Matlab and Weka)</i>: In the <a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.csv">comma-separated-value format</a>,
+the columns of the table are separated by commas.  This format is
+commonly read by most data-analysis packages (e.g., <a href="http://www.mathworks.com/products/matlab/">Matlab</a>).  The <a href="http://www.cs.waikato.ac.nz/ml/weka/">Weka data-mining
+software</a> has collected many machine-learning algorithms that might
+be brought to bear on the keystroke-dynamics data.  While Weka
+encourages the use of its own <a href="http://weka.wiki.sourceforge.net/ARFF">ARFF</a> data-input
+format, a researcher could convert a CSV into an ARFF-formatted file
+by prepending the appropriate header information.<br><br>
+
+<i>(Excel)</i>: In the <a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.xls">Microsoft
+Excel binary-file format</a>, the columns of the table are encoded as
+a standard Excel spreadsheet.  This format can be used by researchers
+wishing to bring Excel's data analysis and graphing capabilities to
+bear on the data.<br><br>
+
+By making the data available in these three formats, we hope to make
+it easier for other researchers to use their preferred data-analysis
+tools.  In our own research, we use the fixed-width format and the <a href="http://www.r-project.org/">R</a> statistical-programming
+environment.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q2-3&#39;);">
+Q2-3: How are the data structured? What do the column names mean? (And why aren't the subject IDs consecutive?)
+</div>
+<div id="q2-3" style=""><div class="ans">
+
+The data are arranged as a table with 34 columns.  Each row of data
+corresponds to the timing information for a single repetition of the
+password by a single subject.  The first column, <i>subject</i>, is a
+unique identifier for each subject (e.g., <code>s002</code> or
+<code>s057</code>).  Even though the data set contains 51 subjects,
+the identifiers do not range from <code>s001</code>
+to <code>s051</code>; subjects have been assigned unique IDs across a
+range of keystroke experiments, and not every subject participated in
+every experiment.  For instance, Subject 1 did not perform the
+password typing task and so <code>s001</code> does not appear in the
+data set.  The second column, <i>sessionIndex</i>, is the session in
+which the password was typed (ranging from 1 to 8).  The third
+column, <i>rep</i>, is the repetition of the password within the
+session (ranging from 1 to 50).<br><br>
+
+The remaining 31 columns present the timing information for the
+password.  The name of the column encodes the type of timing
+information.  Column names of the form <code>H.<i>key</i></code>
+designate a hold time for the named key (i.e., the time from when
+<i>key</i> was pressed to when it was released).  Column names of the
+form <code>DD.<i>key1</i>.<i>key2</i></code> designate a
+keydown-keydown time for the named digraph (i.e., the time from when
+<i>key1</i> was pressed to when <i>key2</i> was pressed).  Column
+names of the form <code>UD.<i>key1</i>.<i>key2</i></code> designate a
+keyup-keydown time for the named digraph (i.e., the time from when
+<i>key1</i> was released to when <i>key2</i> was pressed).  Note that
+<code>UD</code> times can be negative, and that <code>H</code> times
+and <code>UD</code> times add up to <code>DD</code> times.<br><br>
+
+Consider the following one-line example of what you will see in the data:
+<pre>  subject  sessionIndex  rep      H.period   DD.period.t   UD.period.t     ...
+     s002             1    1        0.1491        0.3979        0.2488     ...
+</pre>
+
+The example presents typing data for subject 2, session 1, repetition
+1.  The <code>period</code> key was held down for 0.1491 seconds
+(149.1 milliseconds); the time between pressing the
+<code>period</code> key and the <code>t</code> key (keydown-keydown
+time) was 0.3979 seconds; the time between releasing the
+<code>period</code> and pressing the <code>t</code> key (keyup-keydown
+time) was 0.2488 seconds; and so on.
+
+</div></div>
+
+</li></ul>
+
+</div></div>
+
+<div id="sec3">
+<h3>3. Evaluation Scripts</h3>
+
+<div class="sec">
+
+The following procedure—written in the <i>R</i> language for
+statistical computing (<a href="http://www.r-project.org/"><code>www.r-project.org</code></a>)—demonstrates how to use the data to evaluate three anomaly
+detectors (called Euclidean, Manhattan, and Mahalanobis).
+
+<ul>
+<li> <a href="https://www.cs.cmu.edu/~keystroke/evaluation-script.R"><code>evaluation-script.R</code></a>
+</li></ul>
+
+Note that this script depends on the R package <a href="http://rocr.bioinf.mpi-sb.mpg.de/">ROCR</a> for generating ROC
+curves <a href="https://www.cs.cmu.edu/~keystroke/#ref2">[2]</a>.<br><br>
+
+<b>Common questions:</b>
+
+<ul>
+
+<li> <div class="hdr" onclick="switchDisplay(&#39;q3-1&#39;);">
+Q3-1: What does the script really do?  Can you explain the steps of the
+evaluation?
+</div>
+
+<div id="q3-1" style=""><div class="ans">
+
+For complete details of our evaluation methodology, and a clear
+explanation of our design decisions, we refer readers to our original
+paper <a href="https://www.cs.cmu.edu/~keystroke/#ref1">[1]</a>.  A brief summary of our evaluation
+methodology follows.<br><br>
+
+The following four steps are used to evaluate a single anomaly
+detector on the task of discriminating a single subject (designated as
+the <i>genuine user</i>) from the other 50 subjects (designated as the
+<i>impostors</i>).  After evaluating the detector for a single
+subject, these four steps will be repeated for each subject in the
+data set, so that each subject, in turn, will have been "attacked" by
+each of the other 50 subjects in a balanced experimental
+design.<br><br>
+
+<i>Step 1 (training)</i>: Retrieve the first 200 passwords typed by the genuine
+user from the password-timing table.  Use the anomaly detector's
+training function with these password-typing times to build a
+detection model for the user's typing.<br><br>
+
+<i>Step 2 (genuine-user testing)</i>: Retrieve the last 200 passwords
+typed by the genuine user from the password-timing table.  Use the
+anomaly detector's scoring function and the detection model (from Step
+1) to generate anomaly scores for these password-typing times.  Record
+these anomaly scores as <i>user scores</i>.<br><br>
+
+<i>Step 3 (impostor testing)</i>: Retrieve the first 5 passwords typed
+by each of the 50 impostors (i.e., all subjects other than the genuine
+user) from the password-timing table.  Use the anomaly detector's
+scoring function and the detection model (from Step 1) to generate
+anomaly scores for these password-typing times.  Record these anomaly
+scores as <i>impostor scores</i>.<br><br>
+
+<i>Step 4 (assessing performance)</i>: Employ the user scores and
+impostor scores to generate an ROC curve for the genuine user.
+Calculate, from the ROC curve, an <i>equal-error rate</i>, that is,
+the error rate corresponding to the point on the curve where the
+false-alarm (false-positive) rate and the miss (false-negative) rate
+are equal.<br><br>
+
+Repeat the above four steps, designating each of the subjects as the
+genuine user in turn, and calculating the equal-error rate for the
+genuine user.  Calculate the mean of all 51 subjects' equal-error
+rates as a measure of the detector's performance, and calculate the
+standard deviation as a measure of its variance across subjects.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q3-2&#39;);">
+Q3-2: How do I download R / install packages / run the script?
+</div>
+
+<div id="q3-2" style="display: none;"><div class="ans">
+
+You can download R from the webpage for the R Project for Statistical
+Computing (<a href="http://www.r-project.org/"><code>http://www.r-project.org</code></a>).
+The R statistical-programming environment is a general programming
+language with many functions and packages for conducting a range of
+statistical analyses and data visualizations.  It is available for
+most modern operating systems, and it is free and open-source.  We
+developed and tested our evaluation script with R version 2.6.2, but
+we expect that it will work with similar versions of R.<br><br>
+
+If you are not familiar with R, there are many tutorials and
+references available online.  The following is a collection of some
+that we have used, or that have been recommended to us: <br><br>
+
+<ul>
+<li> <a href="http://www2.uwindsor.ca/~hlynka/HlynkaIntroToR.pdf">
+Introduction to the Statistical Language R</a> (by Myron Hylinka)
+
+</li><li> <a href="http://www.umsl.edu/~fletchert/quant/Rintro.pdf"> A
+Skimpy Intro to R/S/S-Plus</a> (by Thomas Fletcher)
+
+</li><li> <a href="http://cm.bell-labs.com/stat/doc/94.11.ps"> A Brief
+History of S</a> (by Richard Becker)
+
+</li><li> <a href="http://www.cyclismo.org/tutorial/R/"> R Tutorial</a> (by
+Kelly Black)
+
+</li><li> <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf"> An
+Introduction to R</a> (by the R Development Core Team)
+
+</li><li> <a href="http://cran.r-project.org/doc/manuals/R-lang.pdf"> R
+Language Definition</a> (by the R Development Core Team)
+
+</li></ul><br>
+
+Once you have installed R and have become familiar with how to use it,
+the next step is to install an additional package (called <a href="http://rocr.bioinf.mpi-sb.mpg.de/">ROCR</a>) that is necessary
+for running our evaluation.  The R project maintainers have organized
+a large collection of packages, and have made it easy to download and
+install these packages.  The necessary package can be installed with a
+single R command:<br><br>
+
+<center>
+<code>install.packages( 'ROCR' )</code>
+</center><br>
+
+The <a href="http://rocr.bioinf.mpi-sb.mpg.de/">ROCR package</a> <a href="https://www.cs.cmu.edu/~keystroke/#ref2">[2]</a> provides a set of functions that help with the
+analysis of the performance of anomaly-detection algorithms.
+Specifically, we use the package to generate ROC curves based on the
+output of each anomaly detector's scoring function, and then use the
+ROC curves to calculate the detector's equal-error rates.<br><br>
+
+The final step is to download and install the <a href="https://www.cs.cmu.edu/~keystroke/evaluation-script.R">evaluation script</a> from this webpage,
+and to place it in the same directory as the data in <a href="https://www.cs.cmu.edu/~keystroke/DSL-StrongPasswordData.txt">fixed-width format</a>.  To run the
+script, use the R command <code>source</code>:<br><br>
+
+<center>
+<code>source('evaluation-script.R')</code>
+</center><br>
+
+The script first loads libraries that contain functionality used in
+the evaluation.  The next action the script takes is to define
+training and scoring functions for the three anomaly detectors (i.e.,
+the Euclidean, Manhattan, and Mahalanobis detectors).  Then, the
+script defines a function for calculating the equal-error rate of a
+detector based on its output, and a test function that evaluates how
+well a given detector can discriminate a given subject from the rest.
+Finally, the script loads the typing data, and uses the previously
+defined functions to calculate the average equal error rate of each
+detector across all subjects.<br><br>
+
+If you have installed R correctly, installed the appropriate packages,
+and run the evaluation script successfully, it should print
+information with which you can monitor the progress of the evaluation.
+Eventually, it should tally and print the following results for the
+three anomaly detectors:
+
+<pre>            eer.mean eer.sd
+Euclidean      0.171  0.095
+Manhattan      0.153  0.092
+Mahalanobis    0.110  0.065
+</pre>
+
+Note that these results are fractional rates between 0.0 and 1.0 (not
+percentages between 0% and 100%).  They match the average equal-error
+rates and standard deviations for the detectors from Table 2 of our
+original paper (and reproduced in the table of results, below).  By
+running this script successfully, you will have replicated our
+evaluation methodology and reproduced our results for these three
+detectors.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q3-3&#39;);">
+Q3-3: Why does the script only have code for three anomaly detectors?
+</div>
+
+<div id="q3-3" style=""><div class="ans">
+
+The purpose of this webpage is to share the data and the evaluation
+methodology that were the original contributions of our paper, not to
+provide and support code for all 14 anomaly detectors.  In our
+original paper, we describe each of the 14 detectors, and we provide
+references to the original sources.  We encourage researchers who are
+interested in replicating those detectors to use that
+material.<br><br>
+
+We implemented these three anomaly detectors because they are good
+examples with which to demonstrate our evaluation methodology.  They
+are relatively easy to understand, since they are based on classical
+measures of distance from the statistical machine-learning and
+pattern-recognition literature.  They are easy to implement, since
+they do not depend on packages or algorithms not found in a typical R
+installation.  Finally, they are easy to run, since they do not
+require complex optimizations in order to run efficiently.<br><br>
+
+Note that—in the interest of scientific progress—we see a
+benefit in maintaining reference implementations of the top-performing
+detectors.  Such reference implementations could be used, evaluated,
+and improved by the whole community.  We are investigating the
+feasibility of sharing and supporting such reference implementations
+(and wholly encourage others to do so as well) in the future, but are
+not able to do so at the present time.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q3-4&#39;);">
+Q3-4: What other kinds of anomaly detectors can be evaluated using these
+scripts?
+</div>
+
+<div id="q3-4" style="display: none;"><div class="ans">
+
+Each of the anomaly detectors in our comparison was comprised of two
+functions, a <i>training</i> function and a <i>scoring</i> function.
+The training function takes a matrix of password-timing information as
+input, and it outputs a detection model.  Each row of the input matrix
+encodes password-timing information from one repetition of the genuine
+user typing the password.  The function uses this set of timing
+information to build a model of that user's typing.  The details of
+the model are detector specific, and they need not take a particular
+form for our evaluation.<br><br>
+
+The scoring function takes the detection model produced by the
+training function and another matrix of password-timing information as
+input.  It outputs a set of anomaly scores.  The scoring function
+compares the timing information from each password in the matrix to
+the genuine user's typing model.  For each password, it calculates an
+anomaly score, indicating the degree to which that new sample is
+<i>dissimilar</i> from the typing model.  A higher anomaly score means
+greater dissimilarity according to that anomaly detector's conception
+of similarity.<br><br>
+
+The commonality across all the anomaly detectors is that each one can
+be implemented as a <i>training</i> and a <i>scoring</i> function.
+Any other anomaly detector which can be implemented as such a pair of
+functions with the same types of input and output can be evaluated
+using our methodology.  If a new detector were implemented in R as the
+functions <code>newTrain</code> and <code>newScore</code>, it could be
+evaluated simply by adding these two functions to the
+<code>detectorSet</code> list of detectors:
+
+<pre>  detectorSet = list( NewDetector =
+    list( train = newTrain,
+         score = newScore ) );
+</pre>
+
+Our intent in sharing the data is for the password-timing tables to be
+used to evaluate a range of anomaly detectors so that the results of
+the evaluations can be soundly compared, using the same data and the
+same evaluation procedure.  Consequently, we encourage other
+researchers to use our evaluation script to evaluate new and better
+anomaly-detection strategies for keystroke dynamics.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q3-5&#39;);">
+Q3-5: What if I want to do a different evaluation using the data?
+</div>
+
+<div id="q3-5" style="display: none;"><div class="ans">
+
+The data, with or without the evaluation methodology, is intended to
+be a shared resource for public use.  Consequently, if researchers
+would like to do different evaluations using the data, they are
+welcome to do so.  For instance, while our study has focused on
+anomaly detectors, other researchers have considered binary and
+multi-class classifiers for keystroke dynamics.  For instance, a
+binary classifier might be trained to discriminate between two
+typists, or between one typist and a pool of typing data comprised of
+many other typists; a multi-class classifier might be trained to
+identify which of several typists entered a particular typing sample.
+The data shared on this website could be used to evaluate any of these
+alternative families of learning algorithms.<br><br>
+
+<i>Caution:</i> we have one request to researchers using this data,
+but using a different evaluation methodology.  Please, make it very
+clear that your methodology differs from the one in our paper, and
+clearly describe your alternative methodology.  We have observed that
+algorithms evaluated under different conditions are often compared,
+even though the differing evaluation environments represent a serious
+potential confound.  By clearly explaining your evaluation
+methodology, and how it differs from others, you mitigate the risk of
+a confused reader conflating the different methodologies, and making
+unsound comparisons.
+
+</div></div>
+
+</li></ul>
+
+</div>
+</div>
+
+<div id="sec4">
+<h3>4. Table of Results</h3>
+
+<div class="sec">
+
+The following table ranks 14 anomaly detectors based on their average
+equal-error rates.  The evaluation procedure described in the script
+above was used to obtain the equal-error rates for each anomaly
+detector.  For example, the average equal-error rate for the scaled
+Manhattan detector (across all subjects) was 9.62%, and the standard
+deviation was 0.0694.<br><br>
+
+<center>
+<table border="0" width="500">
+<tbody><tr><th>Detector</th><th>Average Equal-Error Rate (stddev)</th></tr>
+<tr>
+<td align="right">Manhattan (scaled)</td>
+<td align="left">0.0962 (0.0694)</td>
+</tr>
+<tr>
+<td align="right">Nearest Neighbor (Mahalanobis)</td>
+<td align="left">0.0996 (0.0642)</td>
+</tr>
+<tr>
+<td align="right">Outlier Count (<i>z</i>-score)</td>
+<td align="left">0.1022 (0.0767)</td>
+</tr>
+<tr>
+<td align="right">SVM (one-class)</td>
+<td align="left">0.1025 (0.0650)</td>
+</tr>
+<tr>
+<td align="right">Mahalanobis</td>
+<td align="left">0.1101 (0.0645)</td>
+</tr>
+<tr>
+<td align="right">Mahalanobis (normed)</td>
+<td align="left">0.1101 (0.0645)</td>
+</tr>
+<tr>
+<td align="right">Manhattan (filter)</td>
+<td align="left">0.1360 (0.0828)</td>
+</tr>
+<tr>
+<td align="right">Manhattan</td>
+<td align="left">0.1529 (0.0925)</td>
+</tr>
+<tr>
+<td align="right">Neural Network (auto-assoc)</td>
+<td align="left">0.1614 (0.0797)</td>
+</tr>
+<tr>
+<td align="right">Euclidean</td>
+<td align="left">0.1706 (0.0952)</td>
+</tr>
+<tr>
+<td align="right">Euclidean (normed)</td>
+<td align="left">0.2153 (0.1187)</td>
+</tr>
+<tr>
+<td align="right">Fuzzy Logic</td>
+<td align="left">0.2213 (0.1051)</td>
+</tr>
+<tr>
+<td align="right"><i>k</i> Means</td>
+<td align="left">0.3722 (0.1391)</td>
+</tr>
+<tr>
+<td align="right">Neural Network (standard)</td>
+<td align="left">0.8283 (0.1483)</td>
+</tr>
+</tbody></table>
+
+</center><br>
+
+Note that these are results are fractional rates between 0.0 and 1.0
+(not percentages between 0% and 100%).<br><br>
+
+<b>Common questions:</b>
+
+
+<ul>
+
+<li> <div class="hdr" onclick="switchDisplay(&#39;q4-1&#39;);">
+Q4-1: How do I interpret this table of results?
+</div>
+
+<div id="q4-1" style=""><div class="ans">
+
+The first column indicates the name of the detector.  All of the
+detectors in this list bear the names they were given in our original
+paper.  The names are meant to describe the mathematical or
+statistical technique that underlies the anomaly-detection strategy.
+The reader interested in how each detector works will find additional
+detail in the prose and references of the original paper.<br><br>
+
+The second column provides the average equal-error rate of each
+detector, as estimated by our evaluation methodology.  The standard
+deviation appears in parentheses.  The detectors are sorted from least
+to highest error.<br><br>
+
+Note that these results and rankings are only the observed results of
+a single evaluation on a single data set.  We would discourage a
+reader from inferring that the top-ranked detectors are necessarily
+going to always outperform the other detectors.  We believe it is
+likely that many factors—who the subjects are, what they type,
+and specifically how the data are collected and analyzed—affect
+the error rates of anomaly detectors used for keystroke dynamics.
+Variations in these factors might change a detector's equal-error
+rate, and might cause a different set of detectors to be among the top
+performers.  A high rank in this table suggests that a detector is
+promising; but more data, and more evaluations will be needed to
+determine how various factors affect keystroke-dynamics error rates.
+This topic is a subject of our current and ongoing research.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q4-2&#39;);">
+Q4-2: Why do you use the average equal-error rate as the sole measure of
+performance?
+</div>
+
+<div id="q4-2" style=""><div class="ans">
+
+Summarizing the performance of an anomaly detector as a single number
+is tricky.  There is no right way to do it that does not make some
+concessions, or have some drawbacks.  As such, researchers in the
+field have used a variety of measures.  In the original paper, we
+reported both the equal-error rate and the zero-miss false-alarm rate,
+since they are both used in the literature.  On this webpage, we
+tabulate the equal-error rate of each detector because it is a common
+measure of performance for many biometric systems.  If other,
+demonstrably better measures of performance emerge, we will consider
+the feasibility of calculating them on our evaluation data, and
+updating this page with these better measures.
+
+</div></div>
+
+</li><li> <div class="hdr" onclick="switchDisplay(&#39;q4-3&#39;);">
+Q4-3: Do you plan to update the table with new results?
+</div>
+
+<div id="q4-3" style=""><div class="ans">
+
+It has been suggested that we maintain a "scoreboard" of the latest
+and best results.  Insofar as we are informed of the results obtained
+by other investigators, we may do so.  We intend to assemble and
+maintain a list of research projects that use and extend our results.
+Researchers might use this reference to compare and build upon each
+other's work.<br><br>
+
+The data and evaluation procedure are freely available for use.  We do
+ask, as a courtesy, that you let us know if you publish results based
+on our data.
+
+</div></div>
+
+</li></ul>
+
+</div>
+</div>
+
+<div id="sec5">
+<h3>5. References</h3>
+
+<div class="sec">
+
+<dl class="bib">
+
+<dt>1</dt><dd> <div id="ref1"> Kevin S. Killourhy and Roy A. Maxion.
+  "Comparing Anomaly Detectors for Keystroke Dynamics," in Proceedings
+  of the 39th Annual International Conference on Dependable Systems
+  and Networks (DSN-2009), pages 125-134, Estoril, Lisbon, Portugal,
+  June 29-July 2, 2009.  IEEE Computer Society Press, Los Alamitos,
+  California, 2009. <a href="http://www.cs.cmu.edu/~keystroke/KillourhyMaxion09.pdf">(pdf)</a> </div> <br>
+
+</dd><dt>2</dt><dd> <div id="ref2">T. Sing, O. Sander, N. Beerenwinkel,
+  T. Lengauer.  "ROCR: visualizing classifier performance in R,"
+  <i>Bioinformatics</i> 21(20):3940-3941 (2005).  <a href="http://rocr.bioinf.mpi-sb.mpg.de/">(link)</a> </div>
+
+</dd></dl>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="sec">
+
+This material is based upon work supported by the National Science
+Foundation under grant numbers CNS-0430474 and CNS-0716677, and by the
+Army Research Office through grant number DAAD19-02-1-0389 to Carnegie
+Mellon University's CyLab.  Any opinions, findings, conclusions, or
+recommendations expressed in this material are those of the authors,
+and do not necessarily reflect the views of the National Science
+Foundation or the Army Research Office.
+
+</div>
+
+<script type="text/javascript">
+toggleAll();
+</script>
+
+
+
+</body></html>
