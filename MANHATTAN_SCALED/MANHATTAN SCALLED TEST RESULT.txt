@@ -1,0 +1,4 @@
+Equal error rate average = 0.1413333333333333
+Equal error rate STD = 0.06799154118861121
+Zero miss false alarm rate average = 0.5397058823529411
+Zero miss false alarm rate STD = 0.271272259888485
